@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DB8E99C1BEAF465006DF749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8E99B1BEAF465006DF749 /* AppDelegate.swift */; };
+		9DB8E99E1BEAF465006DF749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8E99D1BEAF465006DF749 /* ViewController.swift */; };
+		9DB8E9A11BEAF465006DF749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB8E99F1BEAF465006DF749 /* Main.storyboard */; };
+		9DB8E9A41BEAF465006DF749 /* Pet_Vet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8E9A21BEAF465006DF749 /* Pet_Vet.xcdatamodeld */; };
+		9DB8E9A61BEAF465006DF749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB8E9A51BEAF465006DF749 /* Assets.xcassets */; };
+		9DB8E9A91BEAF465006DF749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB8E9A71BEAF465006DF749 /* LaunchScreen.storyboard */; };
+		9DB8E9B41BEAF465006DF749 /* Pet_VetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8E9B31BEAF465006DF749 /* Pet_VetTests.swift */; };
+		9DB8E9BF1BEAF465006DF749 /* Pet_VetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8E9BE1BEAF465006DF749 /* Pet_VetUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DB8E9B01BEAF465006DF749 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DB8E9901BEAF465006DF749 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DB8E9971BEAF465006DF749;
+			remoteInfo = "Pet Vet";
+		};
+		9DB8E9BB1BEAF465006DF749 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DB8E9901BEAF465006DF749 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DB8E9971BEAF465006DF749;
+			remoteInfo = "Pet Vet";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DB8E9981BEAF465006DF749 /* Pet Vet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Vet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB8E99B1BEAF465006DF749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DB8E99D1BEAF465006DF749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DB8E9A01BEAF465006DF749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DB8E9A31BEAF465006DF749 /* Pet_Vet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pet_Vet.xcdatamodel; sourceTree = "<group>"; };
+		9DB8E9A51BEAF465006DF749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DB8E9A81BEAF465006DF749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DB8E9AA1BEAF465006DF749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DB8E9AF1BEAF465006DF749 /* Pet VetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pet VetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB8E9B31BEAF465006DF749 /* Pet_VetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet_VetTests.swift; sourceTree = "<group>"; };
+		9DB8E9B51BEAF465006DF749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DB8E9BA1BEAF465006DF749 /* Pet VetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pet VetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB8E9BE1BEAF465006DF749 /* Pet_VetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet_VetUITests.swift; sourceTree = "<group>"; };
+		9DB8E9C01BEAF465006DF749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DB8E9951BEAF465006DF749 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB8E9AC1BEAF465006DF749 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB8E9B71BEAF465006DF749 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DB8E98F1BEAF465006DF749 = {
+			isa = PBXGroup;
+			children = (
+				9DB8E99A1BEAF465006DF749 /* Pet Vet */,
+				9DB8E9B21BEAF465006DF749 /* Pet VetTests */,
+				9DB8E9BD1BEAF465006DF749 /* Pet VetUITests */,
+				9DB8E9991BEAF465006DF749 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DB8E9991BEAF465006DF749 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DB8E9981BEAF465006DF749 /* Pet Vet.app */,
+				9DB8E9AF1BEAF465006DF749 /* Pet VetTests.xctest */,
+				9DB8E9BA1BEAF465006DF749 /* Pet VetUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DB8E99A1BEAF465006DF749 /* Pet Vet */ = {
+			isa = PBXGroup;
+			children = (
+				9DB8E99B1BEAF465006DF749 /* AppDelegate.swift */,
+				9DB8E99D1BEAF465006DF749 /* ViewController.swift */,
+				9DB8E99F1BEAF465006DF749 /* Main.storyboard */,
+				9DB8E9A51BEAF465006DF749 /* Assets.xcassets */,
+				9DB8E9A71BEAF465006DF749 /* LaunchScreen.storyboard */,
+				9DB8E9AA1BEAF465006DF749 /* Info.plist */,
+				9DB8E9A21BEAF465006DF749 /* Pet_Vet.xcdatamodeld */,
+			);
+			path = "Pet Vet";
+			sourceTree = "<group>";
+		};
+		9DB8E9B21BEAF465006DF749 /* Pet VetTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DB8E9B31BEAF465006DF749 /* Pet_VetTests.swift */,
+				9DB8E9B51BEAF465006DF749 /* Info.plist */,
+			);
+			path = "Pet VetTests";
+			sourceTree = "<group>";
+		};
+		9DB8E9BD1BEAF465006DF749 /* Pet VetUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9DB8E9BE1BEAF465006DF749 /* Pet_VetUITests.swift */,
+				9DB8E9C01BEAF465006DF749 /* Info.plist */,
+			);
+			path = "Pet VetUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DB8E9971BEAF465006DF749 /* Pet Vet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB8E9C31BEAF465006DF749 /* Build configuration list for PBXNativeTarget "Pet Vet" */;
+			buildPhases = (
+				9DB8E9941BEAF465006DF749 /* Sources */,
+				9DB8E9951BEAF465006DF749 /* Frameworks */,
+				9DB8E9961BEAF465006DF749 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pet Vet";
+			productName = "Pet Vet";
+			productReference = 9DB8E9981BEAF465006DF749 /* Pet Vet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DB8E9AE1BEAF465006DF749 /* Pet VetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB8E9C61BEAF465006DF749 /* Build configuration list for PBXNativeTarget "Pet VetTests" */;
+			buildPhases = (
+				9DB8E9AB1BEAF465006DF749 /* Sources */,
+				9DB8E9AC1BEAF465006DF749 /* Frameworks */,
+				9DB8E9AD1BEAF465006DF749 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DB8E9B11BEAF465006DF749 /* PBXTargetDependency */,
+			);
+			name = "Pet VetTests";
+			productName = "Pet VetTests";
+			productReference = 9DB8E9AF1BEAF465006DF749 /* Pet VetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9DB8E9B91BEAF465006DF749 /* Pet VetUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB8E9C91BEAF465006DF749 /* Build configuration list for PBXNativeTarget "Pet VetUITests" */;
+			buildPhases = (
+				9DB8E9B61BEAF465006DF749 /* Sources */,
+				9DB8E9B71BEAF465006DF749 /* Frameworks */,
+				9DB8E9B81BEAF465006DF749 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DB8E9BC1BEAF465006DF749 /* PBXTargetDependency */,
+			);
+			name = "Pet VetUITests";
+			productName = "Pet VetUITests";
+			productReference = 9DB8E9BA1BEAF465006DF749 /* Pet VetUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DB8E9901BEAF465006DF749 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Christopher Burgess";
+				TargetAttributes = {
+					9DB8E9971BEAF465006DF749 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					9DB8E9AE1BEAF465006DF749 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 9DB8E9971BEAF465006DF749;
+					};
+					9DB8E9B91BEAF465006DF749 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 9DB8E9971BEAF465006DF749;
+					};
+				};
+			};
+			buildConfigurationList = 9DB8E9931BEAF465006DF749 /* Build configuration list for PBXProject "Pet Vet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DB8E98F1BEAF465006DF749;
+			productRefGroup = 9DB8E9991BEAF465006DF749 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DB8E9971BEAF465006DF749 /* Pet Vet */,
+				9DB8E9AE1BEAF465006DF749 /* Pet VetTests */,
+				9DB8E9B91BEAF465006DF749 /* Pet VetUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DB8E9961BEAF465006DF749 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DB8E9A91BEAF465006DF749 /* LaunchScreen.storyboard in Resources */,
+				9DB8E9A61BEAF465006DF749 /* Assets.xcassets in Resources */,
+				9DB8E9A11BEAF465006DF749 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB8E9AD1BEAF465006DF749 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB8E9B81BEAF465006DF749 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DB8E9941BEAF465006DF749 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DB8E99E1BEAF465006DF749 /* ViewController.swift in Sources */,
+				9DB8E99C1BEAF465006DF749 /* AppDelegate.swift in Sources */,
+				9DB8E9A41BEAF465006DF749 /* Pet_Vet.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB8E9AB1BEAF465006DF749 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DB8E9B41BEAF465006DF749 /* Pet_VetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DB8E9B61BEAF465006DF749 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DB8E9BF1BEAF465006DF749 /* Pet_VetUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DB8E9B11BEAF465006DF749 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DB8E9971BEAF465006DF749 /* Pet Vet */;
+			targetProxy = 9DB8E9B01BEAF465006DF749 /* PBXContainerItemProxy */;
+		};
+		9DB8E9BC1BEAF465006DF749 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DB8E9971BEAF465006DF749 /* Pet Vet */;
+			targetProxy = 9DB8E9BB1BEAF465006DF749 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DB8E99F1BEAF465006DF749 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DB8E9A01BEAF465006DF749 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DB8E9A71BEAF465006DF749 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DB8E9A81BEAF465006DF749 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DB8E9C11BEAF465006DF749 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9DB8E9C21BEAF465006DF749 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DB8E9C41BEAF465006DF749 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Pet Vet/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CottontailSolutions.Pet-Vet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9DB8E9C51BEAF465006DF749 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Pet Vet/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CottontailSolutions.Pet-Vet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9DB8E9C71BEAF465006DF749 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Pet VetTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CottontailSolutions.Pet-VetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pet Vet.app/Pet Vet";
+			};
+			name = Debug;
+		};
+		9DB8E9C81BEAF465006DF749 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Pet VetTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CottontailSolutions.Pet-VetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pet Vet.app/Pet Vet";
+			};
+			name = Release;
+		};
+		9DB8E9CA1BEAF465006DF749 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Pet VetUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CottontailSolutions.Pet-VetUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Pet Vet";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		9DB8E9CB1BEAF465006DF749 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Pet VetUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CottontailSolutions.Pet-VetUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Pet Vet";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DB8E9931BEAF465006DF749 /* Build configuration list for PBXProject "Pet Vet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB8E9C11BEAF465006DF749 /* Debug */,
+				9DB8E9C21BEAF465006DF749 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DB8E9C31BEAF465006DF749 /* Build configuration list for PBXNativeTarget "Pet Vet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB8E9C41BEAF465006DF749 /* Debug */,
+				9DB8E9C51BEAF465006DF749 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9DB8E9C61BEAF465006DF749 /* Build configuration list for PBXNativeTarget "Pet VetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB8E9C71BEAF465006DF749 /* Debug */,
+				9DB8E9C81BEAF465006DF749 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9DB8E9C91BEAF465006DF749 /* Build configuration list for PBXNativeTarget "Pet VetUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB8E9CA1BEAF465006DF749 /* Debug */,
+				9DB8E9CB1BEAF465006DF749 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9DB8E9A21BEAF465006DF749 /* Pet_Vet.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9DB8E9A31BEAF465006DF749 /* Pet_Vet.xcdatamodel */,
+			);
+			currentVersion = 9DB8E9A31BEAF465006DF749 /* Pet_Vet.xcdatamodel */;
+			path = Pet_Vet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9DB8E9901BEAF465006DF749 /* Project object */;
+}
