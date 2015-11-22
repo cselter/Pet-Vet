@@ -1,5 +1,5 @@
 //
-//  AddEditPetViewController.swift
+//  AddPetViewController.swift
 //  Pet Vet
 //
 //  Created by Christopher Burgess on 11/4/15.
@@ -10,8 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-
-class AddEditPetViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class AddPetViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
      @IBOutlet weak var nameTextField: UITextField!
      @IBOutlet weak var speciesToggle: UISegmentedControl!
@@ -26,35 +25,25 @@ class AddEditPetViewController: UIViewController, NSFetchedResultsControllerDele
      var adoptionDate: NSDate?
      var birthdateDate: NSDate?
      
+     // Error Messages
      let missingName: String = "Name is required."
      let missingColor: String = "Color is required."
      let missingBirthdate: String = "Birthdate is required."
      let missingBreed: String = "Breed is required."
      
-     
-     
-     
      override func viewDidLoad() {
           super.viewDidLoad()
-          // Do any additional setup after loading the view, typically from a nib.
-       
+          notesTextView.text = ""
      }
-     
-     override func didReceiveMemoryWarning() {
-          super.didReceiveMemoryWarning()
-          // Dispose of any resources that can be recreated.
-     }
-     
-     
-     
+
      @IBAction func birthdateEditBegin(sender: UITextField) {
           let datePickerView: UIDatePicker = UIDatePicker()
           datePickerView.datePickerMode = UIDatePickerMode.Date
           sender.inputView = datePickerView
-          datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+          datePickerView.addTarget(self, action: Selector("birthdatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
      }
      
-     func datePickerValueChanged(sender:UIDatePicker) {
+     func birthdatePickerValueChanged(sender:UIDatePicker) {
           let dateFormatter = NSDateFormatter()
           dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
           dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
@@ -76,14 +65,11 @@ class AddEditPetViewController: UIViewController, NSFetchedResultsControllerDele
           adoptionDateTextField.text = dateFormatter.stringFromDate(sender.date)
           adoptionDate = sender.date
      }
-
-
      
-     
-     
-     
+     // ***********************************************
+     // * addNewPet: adds new Pet object to Core Data *
+     // ***********************************************
      @IBAction func addNewPet(sender: AnyObject) {
-          
           if nameTextField.text == nil || nameTextField.text == "" {
                showAlert(missingName)
           } else if birthdateTextField.text == nil || birthdateTextField.text == "" {
@@ -93,7 +79,6 @@ class AddEditPetViewController: UIViewController, NSFetchedResultsControllerDele
           } else if breedTextField.text == nil || breedTextField.text == "" {
                showAlert(missingBreed)
           } else {
-
                var speciesString: String! = ""
                var sexString: String! = ""
                
@@ -110,10 +95,12 @@ class AddEditPetViewController: UIViewController, NSFetchedResultsControllerDele
                     sexString = "Female"
                }
                
+               // Use birthdate as Adoption Date if none entered
                if adoptionDateTextField.text == "" || adoptionDateTextField.text == nil {
                     adoptionDate = birthdateDate
                }
                
+               // Load Dictionary with new Pet data
                var newPet : [String:AnyObject] = [
                     "name" : nameTextField.text as String!,
                     "species" : speciesString as String!,
@@ -127,39 +114,28 @@ class AddEditPetViewController: UIViewController, NSFetchedResultsControllerDele
                     "adoptDate" : adoptionDate as NSDate!
                ]
                
-               
-               
+               // Add the new Pet to Core Data
                let addPet = Pet(dictionary: newPet, context: self.sharedContext)
-               
                CoreDataStackManager.sharedInstance().saveContext()
                
                self.dismissViewControllerAnimated(true, completion: nil)
           }
      }
      
-     
-     
-     
      // MARK: - Core Data Convenience. This will be useful for fetching. And for adding and saving objects as well.
      var sharedContext: NSManagedObjectContext {
           return CoreDataStackManager.sharedInstance().managedObjectContext!
      }
      
-     
      func showAlert (alertString: String) {
           var alert = UIAlertController(title: "Missing Information", message: alertString, preferredStyle: UIAlertControllerStyle.Alert)
           alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
           
-          
           self.presentViewController(alert, animated: true, completion: nil)
-          
      }
-     
      
      @IBAction func cancelAndDismiss(sender: AnyObject) {
           self.dismissViewControllerAnimated(true, completion: nil)
      }
-     
-       
 }
 

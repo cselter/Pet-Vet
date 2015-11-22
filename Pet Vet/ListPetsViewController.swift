@@ -60,19 +60,25 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           
           let detailText = "\(petSex) \(petBreed)"
           
-          //cell.textLabel!.text = pet.name
-          //cell.detailTextLabel!.text = detailText
-          
           cell.petNameLabel.text = pet.name
           cell.sexAndBreedLabel.text = detailText
           
           let age = calculateAge(pet as! NSManagedObject)
           cell.ageLabel.text = age
 
+          if petSex as! String == "Male" {
+               cell.pawPrintImageView.image = UIImage(named: "pawBlue")
+          } else {
+               cell.pawPrintImageView.image = UIImage(named: "pawPink")
+          }
+          
+          // print(pet)
           return cell
      }
      
-     
+     // ***********************
+     // * Swipe to delete Pet *
+     // ***********************
      override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
           if editingStyle == .Delete {
                deletePetIndexPath = indexPath
@@ -80,6 +86,21 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
                confirmDelete(petToDelete.name)
           }
      }
+     
+     // **************************
+     // * Selected a Pet to View *
+     // **************************
+     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+          
+          let controller = storyboard!.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+          
+          let pet = fetchedResultsController.objectAtIndexPath(indexPath)
+          
+          controller.selectedPet = pet as! Pet
+          
+          self.navigationController!.pushViewController(controller, animated: true)
+     }
+     
      
      func controllerWillChangeContent(controller: NSFetchedResultsController) {
           self.petTableView.reloadData()
@@ -148,7 +169,7 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
                sharedContext.deleteObject(petToDelete)
                CoreDataStackManager.sharedInstance().saveContext()
                
-               tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+               tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                
                deletePetIndexPath = nil
                tableView.endUpdates()
@@ -161,17 +182,13 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
      
      
      func calculateAge(pet: NSManagedObject) -> String {
-          
           var age: String = ""
-          
           let birthday = pet.valueForKey("birthdate") as! NSDate
-     
           let yearsFrom = NSDate().yearsFrom(birthday)
           var monthsFrom = NSDate().monthsFrom(birthday)
 
-          
+          // Format the age properly
           if yearsFrom > 0 {
-               
                if yearsFrom == 1 {
                     age.appendContentsOf("\(yearsFrom) year ")
                } else {
@@ -187,24 +204,15 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
                          age.appendContentsOf("\(monthsFrom) months")
                     }
                }
-               
           } else {
-               
                if monthsFrom == 1 {
                     age.appendContentsOf("\(monthsFrom) month")
                } else {
                     age.appendContentsOf("\(monthsFrom) months")
                }
           }
-          
-          
-          print (age)
-          
-          
           return age
-          
      }
-     
      
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc (Pet)
 
@@ -23,6 +24,7 @@ class Pet: NSManagedObject {
      @NSManaged var adoptDate: NSDate
      @NSManaged var birthdate: NSDate
      @NSManaged var notes: String
+     @NSManaged var photo: NSData?
      
      struct Keys {
           static let Name = "name"
@@ -45,7 +47,6 @@ class Pet: NSManagedObject {
           let entity = NSEntityDescription.entityForName("Pet", inManagedObjectContext: context)!
           super.init(entity: entity, insertIntoManagedObjectContext: context)
           
-          
           name = dictionary[Keys.Name] as! String
           sex = dictionary[Keys.Sex] as! String
           species = dictionary[Keys.Species] as! String
@@ -58,19 +59,59 @@ class Pet: NSManagedObject {
           
           if dictionary[Keys.MicrochipID] != nil {
                microchipID = dictionary[Keys.MicrochipID] as! String
+          } else {
+               microchipID = ""
           }
           
           if dictionary[Keys.RegistrationID] != nil {
                registrationID = dictionary[Keys.RegistrationID] as! String
+          } else {
+               registrationID = ""
           }
           
           if dictionary[Keys.AdoptDate] != nil {
                adoptDate = dictionary[Keys.AdoptDate] as! NSDate
           }
           
-          //if dictionary[Keys.Notes] != nil {
-          //     notes = dictionary[Keys.Notes] as! String
-          //}
+          if dictionary[Keys.Notes] != nil {
+               notes = dictionary[Keys.Notes] as! String
+          } else {
+               notes = ""
+          }
      }
+     
+     func calculateAge() -> String {
+          var age: String = ""
+          let birthday = self.birthdate
+          let yearsFrom = NSDate().yearsFrom(birthday)
+          var monthsFrom = NSDate().monthsFrom(birthday)
+          
+          // Format the age properly
+          if yearsFrom > 0 {
+               if yearsFrom == 1 {
+                    age.appendContentsOf("\(yearsFrom) year ")
+               } else {
+                    age.appendContentsOf("\(yearsFrom) years ")
+               }
+               
+               if monthsFrom > 0 {
+                    let years = yearsFrom * 12
+                    monthsFrom -= years
+                    if monthsFrom == 1 {
+                         age.appendContentsOf("\(monthsFrom) month")
+                    } else {
+                         age.appendContentsOf("\(monthsFrom) months")
+                    }
+               }
+          } else {
+               if monthsFrom == 1 {
+                    age.appendContentsOf("\(monthsFrom) month")
+               } else {
+                    age.appendContentsOf("\(monthsFrom) months")
+               }
+          }
+          return age
+     }
+
 
 }

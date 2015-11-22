@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15C40a" minimumToolsVersion="Automatic">
-    <entity name="Pet" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15C47a" minimumToolsVersion="Automatic">
+    <entity name="Pet" representedClassName="Pet" syncable="YES">
         <attribute name="adoptDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="breed" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="microchipID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="registrationID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="weights" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weight" inverseName="pet" inverseEntity="Weight" syncable="YES"/>
+        <relationship name="weights" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Weight" inverseName="pet" inverseEntity="Weight" syncable="YES"/>
     </entity>
-    <entity name="Weight" syncable="YES">
+    <entity name="Weight" representedClassName="Weight" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="pet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pet" inverseName="weights" inverseEntity="Pet" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Pet" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Pet" positionX="-63" positionY="-18" width="128" height="225"/>
         <element name="Weight" positionX="-18" positionY="108" width="128" height="90"/>
     </elements>
 </model>

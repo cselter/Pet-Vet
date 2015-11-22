@@ -15,7 +15,7 @@ class Weight: NSManagedObject {
      
      @NSManaged var weight: Double
      @NSManaged var date: NSDate
-     // @NSManaged var pet: Pet?
+     @NSManaged var pet: Pet?
      
      override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
           super.init(entity: entity, insertIntoManagedObjectContext: context)

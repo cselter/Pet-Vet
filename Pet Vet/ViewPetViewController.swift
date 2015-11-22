@@ -8,28 +8,47 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class ViewPetViewController: UIViewController {
      
+     // Currently Selected Pet
+     var selectedPet: Pet!
+     
+     @IBOutlet weak var petNameLabel: UILabel!
+     @IBOutlet weak var sexAndBreedLabel: UILabel!
+     @IBOutlet weak var ageLabel: UILabel!
+     
+     
+     
+     
+     
+     
      override func viewDidLoad() {
           super.viewDidLoad()
-          // Do any additional setup after loading the view, typically from a nib.
+          
+          petNameLabel.text = selectedPet.name
+          if selectedPet.sex == "Male" {
+               petNameLabel.textColor = UIColor.blueColor()
+          }
+          
+          ageLabel.text = selectedPet.calculateAge()
+          sexAndBreedLabel.text = ""
+          sexAndBreedLabel.text?.appendContentsOf(selectedPet.sex)
+          sexAndBreedLabel.text?.appendContentsOf(" \(selectedPet.breed)")
+          
      }
+          
      
-     override func didReceiveMemoryWarning() {
-          super.didReceiveMemoryWarning()
-          // Dispose of any resources that can be recreated.
+     
+     
+     
+     
+     
+     
+     @IBAction func dismissViewPet(sender: AnyObject) {
+          self.dismissViewControllerAnimated(true, completion: nil)
      }
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
      
      
      
