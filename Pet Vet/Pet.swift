@@ -80,12 +80,13 @@ class Pet: NSManagedObject {
           }
      }
      
+     // Function to return current age as a formatted String
      func calculateAge() -> String {
           var age: String = ""
           let birthday = self.birthdate
-          let yearsFrom = NSDate().yearsFrom(birthday)
           var monthsFrom = NSDate().monthsFrom(birthday)
-          
+          let yearsFrom = NSDate().yearsFrom(birthday)
+
           // Format the age properly
           if yearsFrom > 0 {
                if yearsFrom == 1 {
@@ -96,10 +97,12 @@ class Pet: NSManagedObject {
                
                if monthsFrom > 0 {
                     let years = yearsFrom * 12
+
                     monthsFrom -= years
+                    
                     if monthsFrom == 1 {
                          age.appendContentsOf("\(monthsFrom) month")
-                    } else {
+                    } else if monthsFrom > 1 {
                          age.appendContentsOf("\(monthsFrom) months")
                     }
                }
@@ -112,6 +115,4 @@ class Pet: NSManagedObject {
           }
           return age
      }
-
-
 }

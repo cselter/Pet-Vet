@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class AddPetViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class AddPetViewController: UIViewController, NSFetchedResultsControllerDelegate, BreedPickerListViewControllerDelegate {
 
      @IBOutlet weak var nameTextField: UITextField!
      @IBOutlet weak var speciesToggle: UISegmentedControl!
@@ -137,5 +137,44 @@ class AddPetViewController: UIViewController, NSFetchedResultsControllerDelegate
      @IBAction func cancelAndDismiss(sender: AnyObject) {
           self.dismissViewControllerAnimated(true, completion: nil)
      }
+     
+     
+     @IBAction func breedButtonPressed(sender: AnyObject) {
+          
+          let breedController = storyboard!.instantiateViewControllerWithIdentifier("BreedPickerListViewController") as! BreedPickerListViewController
+          
+          breedController.delegate = self
+          
+          self.presentViewController(breedController, animated: true, completion: nil)
+     }
+     
+     
+     
+     // MARK: - Breed Picker Delegate
+     func breedPicker(breedPicker: BreedPickerListViewController, didPickBreed breed: String?) {
+          
+          if let newBreed = breed {
+               
+               print("breed selected: \(newBreed)")
+               breedTextField.text = newBreed
+          }
+          
+          
+          
+
+     }
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
 }
 

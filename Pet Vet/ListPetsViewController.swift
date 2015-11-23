@@ -63,7 +63,8 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           cell.petNameLabel.text = pet.name
           cell.sexAndBreedLabel.text = detailText
           
-          let age = calculateAge(pet as! NSManagedObject)
+          let agePet = pet as! Pet
+          let age = agePet.calculateAge()
           cell.ageLabel.text = age
 
           if petSex as! String == "Male" {
@@ -71,8 +72,7 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           } else {
                cell.pawPrintImageView.image = UIImage(named: "pawPink")
           }
-          
-          // print(pet)
+
           return cell
      }
      
@@ -180,39 +180,6 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           deletePetIndexPath = nil
      }
      
-     
-     func calculateAge(pet: NSManagedObject) -> String {
-          var age: String = ""
-          let birthday = pet.valueForKey("birthdate") as! NSDate
-          let yearsFrom = NSDate().yearsFrom(birthday)
-          var monthsFrom = NSDate().monthsFrom(birthday)
-
-          // Format the age properly
-          if yearsFrom > 0 {
-               if yearsFrom == 1 {
-                    age.appendContentsOf("\(yearsFrom) year ")
-               } else {
-                    age.appendContentsOf("\(yearsFrom) years ")
-               }
-               
-               if monthsFrom > 0 {
-                    let years = yearsFrom * 12
-                    monthsFrom -= years
-                    if monthsFrom == 1 {
-                         age.appendContentsOf("\(monthsFrom) month")
-                    } else {
-                         age.appendContentsOf("\(monthsFrom) months")
-                    }
-               }
-          } else {
-               if monthsFrom == 1 {
-                    age.appendContentsOf("\(monthsFrom) month")
-               } else {
-                    age.appendContentsOf("\(monthsFrom) months")
-               }
-          }
-          return age
-     }
      
 }
 

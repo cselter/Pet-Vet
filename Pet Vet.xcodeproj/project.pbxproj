@@ -13,6 +13,7 @@
 		9D6197211BF96BF1007540EF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197201BF96BF1007540EF /* AboutViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9D6197231BF970AA007540EF /* WeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197221BF970AA007540EF /* WeightTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9D6197251BF97577007540EF /* AddWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6197241BF97577007540EF /* AddWeightViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9D7CDCFD1C0297E10006694C /* BreedPickerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CDCFC1C0297E10006694C /* BreedPickerListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9D9DCE021BF42287000C662B /* ViewPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE011BF42287000C662B /* ViewPetViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9D9DCE061BF42355000C662B /* ListPetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE051BF42355000C662B /* ListPetsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9D9DCE0C1BF42E41000C662B /* PetFinderAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE0B1BF42E41000C662B /* PetFinderAPIClient.swift */; settings = {ASSET_TAGS = (); }; };
@@ -53,6 +54,7 @@
 		9D6197201BF96BF1007540EF /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9D6197221BF970AA007540EF /* WeightTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightTableViewController.swift; sourceTree = "<group>"; };
 		9D6197241BF97577007540EF /* AddWeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWeightViewController.swift; sourceTree = "<group>"; };
+		9D7CDCFC1C0297E10006694C /* BreedPickerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedPickerListViewController.swift; sourceTree = "<group>"; };
 		9D9DCE011BF42287000C662B /* ViewPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPetViewController.swift; sourceTree = "<group>"; };
 		9D9DCE051BF42355000C662B /* ListPetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPetsViewController.swift; sourceTree = "<group>"; };
 		9D9DCE0B1BF42E41000C662B /* PetFinderAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetFinderAPIClient.swift; sourceTree = "<group>"; };
@@ -105,12 +107,13 @@
 			children = (
 				9DB8E9A71BEAF465006DF749 /* LaunchScreen.storyboard */,
 				9DB8E99F1BEAF465006DF749 /* Main.storyboard */,
+				9DB8E99D1BEAF465006DF749 /* AddPetViewController.swift */,
+				9D7CDCFC1C0297E10006694C /* BreedPickerListViewController.swift */,
 				9D6197241BF97577007540EF /* AddWeightViewController.swift */,
 				9D6197221BF970AA007540EF /* WeightTableViewController.swift */,
 				9D61971E1BF964F9007540EF /* MenuViewController.swift */,
 				9D9DCE051BF42355000C662B /* ListPetsViewController.swift */,
 				9D9DCE201BF6D53A000C662B /* PetTableViewCell.swift */,
-				9DB8E99D1BEAF465006DF749 /* AddPetViewController.swift */,
 				9D9DCE011BF42287000C662B /* ViewPetViewController.swift */,
 				9D6197201BF96BF1007540EF /* AboutViewController.swift */,
 			);
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB8E99E1BEAF465006DF749 /* AddPetViewController.swift in Sources */,
+				9D7CDCFD1C0297E10006694C /* BreedPickerListViewController.swift in Sources */,
 				9D23E7451BEB0417007D83A2 /* CoreDataStackManager.swift in Sources */,
 				9DB8E99C1BEAF465006DF749 /* AppDelegate.swift in Sources */,
 				9D9DCE1D1BF6C3B1000C662B /* Pet.swift in Sources */,
