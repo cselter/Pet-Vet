@@ -17,6 +17,8 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
      var storedPets = [Pet]()      // local array of fetched pets
      var deletePetIndexPath: NSIndexPath? = nil
      
+     let StoredPetKey = "Stored Pet Count"
+     
      override func viewDidLoad() {
           super.viewDidLoad()
           self.petTableView.delegate = self
@@ -32,6 +34,9 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
      override func viewWillAppear(animated: Bool) {
           super.viewWillAppear(animated)
           self.storedPets = self.fetchAllPets()
+          
+          // Save the pet count using NSUserDefaults
+          NSUserDefaults.standardUserDefaults().setInteger(storedPets.count, forKey: StoredPetKey)
           
           print("storedPets.count: \(storedPets.count)")    // DEBUG
      }
@@ -53,11 +58,11 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           
           let cell = tableView.dequeueReusableCellWithIdentifier("petCell", forIndexPath: indexPath) as! PetTableViewCell
           
-          let pet = fetchedResultsController.objectAtIndexPath(indexPath)
+          var pet = fetchedResultsController.objectAtIndexPath(indexPath)
 
           let petSex = pet.valueForKey("sex")!
           let petBreed = pet.valueForKey("breed")!
-          
+          let petSpecies = pet.valueForKey("species")!
           let detailText = "\(petSex) \(petBreed)"
           
           cell.petNameLabel.text = pet.name
@@ -68,11 +73,32 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           cell.ageLabel.text = age
 
           if petSex as! String == "Male" {
-               cell.pawPrintImageView.image = UIImage(named: "pawBlue")
+               if petSpecies as! String == "Dog" {
+                    cell.pawPrintImageView.image = UIImage(named: "dogBlue")
+               } else {
+                    cell.pawPrintImageView.image = UIImage(named: "catBlue")
+               }
           } else {
-               cell.pawPrintImageView.image = UIImage(named: "pawPink")
+               if petSpecies as! String == "Dog" {
+                    cell.pawPrintImageView.image = UIImage(named: "dogPink")
+               } else {
+                    cell.pawPrintImageView.image = UIImage(named: "catPink")
+               }
           }
 
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           return cell
      }
      
@@ -174,6 +200,9 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
                deletePetIndexPath = nil
                tableView.endUpdates()
           }
+          
+          // Update Pet Count in NSUserDefaults
+          NSUserDefaults.standardUserDefaults().setInteger(storedPets.count-1, forKey: StoredPetKey)
      }
      
      func cancelDeletePet(alertAction: UIAlertAction!) {

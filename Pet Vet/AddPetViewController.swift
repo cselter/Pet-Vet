@@ -145,36 +145,27 @@ class AddPetViewController: UIViewController, NSFetchedResultsControllerDelegate
           
           breedController.delegate = self
           
+          if speciesToggle.selectedSegmentIndex == 0 {
+               breedController.species = "dog"
+               
+          } else {
+               breedController.species = "cat"
+          }
+          
           self.presentViewController(breedController, animated: true, completion: nil)
      }
      
      
      
-     // MARK: - Breed Picker Delegate
+     // Breed Picker Delegate
      func breedPicker(breedPicker: BreedPickerListViewController, didPickBreed breed: String?) {
           
           if let newBreed = breed {
-               
                print("breed selected: \(newBreed)")
                breedTextField.text = newBreed
           }
-          
-          
-          
-
      }
 
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
      
 }
 

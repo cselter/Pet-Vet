@@ -2,18 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pawNoWhite.pdf",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "pawNoWhite-1.pdf",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "pawNoWhite-2.pdf",
-      "scale" : "3x"
+      "filename" : "pawNoWhite.pdf"
     }
   ],
   "info" : {

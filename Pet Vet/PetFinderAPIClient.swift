@@ -33,6 +33,8 @@ class PetFinderAPIClient : NSObject {
      
      func loadBreeds(completionHandler: (data: NSDictionary?, errorString: String?) -> Void) {
 
+          print(animal)
+          
           let keyValuePairs = [
                "key": PETFINDER_API_KEY,
                "animal": "\(animal!)",

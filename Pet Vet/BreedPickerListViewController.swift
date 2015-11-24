@@ -13,39 +13,63 @@ protocol BreedPickerListViewControllerDelegate {
      func breedPicker(breedPicker: BreedPickerListViewController, didPickBreed breed: String?)
 }
 
-class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
      
-     //var appDelegate: AppDelegate!
-     let client = PetFinderAPIClient.sharedInstance()
-     
-     var delegate: BreedPickerListViewControllerDelegate!
-     
+     @IBOutlet weak var navBar: UINavigationBar!
+
      @IBOutlet weak var breedListTableView: UITableView!
+     // @IBOutlet weak var searchBar: UISearchBar!
    
-     //var breedArr = NSArray()
+     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
      
+     @IBOutlet weak var loadingBreedsTextView: UITextView!
+     
+     let client = PetFinderAPIClient.sharedInstance()
+     var delegate: BreedPickerListViewControllerDelegate!
      var breedData: [String] = [String]()
+     var species: String?
+     
+     var filteredTableData = [String]()
+     var resultSearchController = UISearchController()
+     
+     @IBOutlet weak var activityView: UIView!
      
      override func viewDidLoad() {
           super.viewDidLoad()
-
-          breedListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "breedCell")
+          
+          self.navBar.topItem!.title = "Select \(species!.capitalizedString) Breed"
           breedListTableView.delegate = self
           breedListTableView.dataSource = self
-          //appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+          
+          //activityView.hidden = false
+          activityIndicator.startAnimating()
+          
           getBreeds()
-          breedListTableView.reloadData()
+          
+          //
+          
+          //activityView.hidden = true
+          
+          self.resultSearchController = ({
+               let controller = UISearchController(searchResultsController: nil)
+               controller.searchResultsUpdater = self
+               controller.dimsBackgroundDuringPresentation = false
+               controller.searchBar.sizeToFit()
+               self.breedListTableView.tableHeaderView = controller.searchBar
+               return controller
+          })()
+          
      }
      
      func getBreeds() {
-          
           let parseDataClient = PetFinderAPIClient.sharedInstance()
+          parseDataClient.animal = species
           
           parseDataClient.loadBreeds() {
                breeds, errorString in
                
                if let breeds = breeds {
-                    //if let appDelegate = self.appDelegate {
                          let breedList = breeds["breed"]! as! NSArray
                          
                          for item in breedList {
@@ -53,13 +77,12 @@ class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITa
                               self.breedData.append("\(breedName!)")
                          }
                          
-                         //appDelegate.breedList = self.breedData
-                         
                          dispatch_async(dispatch_get_main_queue(), {
                               self.breedListTableView.reloadData()
-
+                              self.activityIndicator.stopAnimating()
+                              self.activityView.hidden = true
+                              self.loadingBreedsTextView.hidden = true
                          })
-                   // }
                } else {
                     if let error = errorString {
                          print(error)
@@ -70,32 +93,64 @@ class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITa
      
      
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return breedData.count ?? 0
+          if (self.resultSearchController.active) {
+               return self.filteredTableData.count
+          }
+          else {
+               return breedData.count ?? 0
+          }
      }
+     
+     
+     
      
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
           
           let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("breedCell", forIndexPath: indexPath) as UITableViewCell
           
-          cell.textLabel!.text = self.breedData[indexPath.row]
-          return cell
+          if (self.resultSearchController.active) {
+               cell.textLabel?.text = filteredTableData[indexPath.row]
+               return cell
+          }
+          else {
+               cell.textLabel!.text = self.breedData[indexPath.row]
+               return cell
+          }
      }
      
      
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-          let breed = breedData[indexPath.row]
           
-          // Alert the delegate
-          delegate?.breedPicker(self, didPickBreed: breed)
-          // print(breed)
-                    
+          var breed: String?
+          
+          if (self.resultSearchController.active) {
+               breed = filteredTableData[indexPath.row]
+               // Alert the delegate
+               delegate?.breedPicker(self, didPickBreed: breed)
+               self.dismissViewControllerAnimated(false, completion: nil)
+          } else {
+               breed = breedData[indexPath.row]
+               // Alert the delegate
+               delegate?.breedPicker(self, didPickBreed: breed)
+          }
           self.dismissViewControllerAnimated(true, completion: nil)
      }
+     
+     func updateSearchResultsForSearchController(searchController: UISearchController)
+     {
+          filteredTableData.removeAll(keepCapacity: false)
+          
+          let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+          let array = (breedData as NSArray).filteredArrayUsingPredicate(searchPredicate)
+          filteredTableData = array as! [String]
+          
+          self.breedListTableView.reloadData()
+     }
+     
      
      
      @IBAction func cancelButtonPressed(sender: AnyObject) {
           delegate?.breedPicker(self, didPickBreed: nil)
           self.dismissViewControllerAnimated(true, completion: nil)
      }
-     
 }

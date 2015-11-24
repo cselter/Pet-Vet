@@ -39,7 +39,6 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
           
           let detailText = "\(petSex) \(petBreed)"
           
-          
           self.sexAndBreedLabel.text = detailText
           
           let age = selectedPet.calculateAge()
@@ -58,7 +57,7 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
           
           if selectedPet.photo != nil {
                photoImageView.image = UIImage(data: selectedPet.photo!)
-
+               
           } else {
                photoImageView.image = UIImage(named: "cameraBlue")
                photoImageView.contentMode = UIViewContentMode.Center
@@ -83,6 +82,7 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
           // Save selected image to Pet Object
           selectedPet.photo = imageData
           CoreDataStackManager.sharedInstance().saveContext()
+          
      }
      
      @IBAction func weightButtonPressed(sender: AnyObject) {
@@ -92,5 +92,28 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
           controller.selectedPet = pet
           self.navigationController!.pushViewController(controller, animated: true)
      }
+     
+     
+     
+     
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+          if segue.identifier == "editPetSegue" {
+               print(segue.identifier)
+               
+               if let editPetVC = segue.destinationViewController as? EditPetViewController {
+                   
+                    
+                    
+                    editPetVC.selectedPet = self.selectedPet
+                    
+               }
+               
+               
+               
+          }
+     }
+     
+     
      
 }
