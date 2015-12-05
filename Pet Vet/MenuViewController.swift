@@ -14,43 +14,20 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
      
      @IBOutlet weak var pawPrintImageView: UIImageView!
      @IBOutlet weak var petNameLabel: UILabel!
-     
      @IBOutlet weak var sexAndBreedLabel: UILabel!
      @IBOutlet weak var ageLabel: UILabel!
-     
      @IBOutlet weak var photoImageView: UIImageView!
-     
      
      // Currently Selected Pet
      var selectedPet: Pet!
      
-     
      let imagePicker = UIImagePickerController()
-     
      
      override func viewDidLoad() {
           super.viewDidLoad()
           self.navigationItem.title = "Menu"
+          self.navigationController?.navigationBar.translucent = false 
           
-          petNameLabel.text = selectedPet.name
-          
-          let petSex = selectedPet.valueForKey("sex")!
-          let petBreed = selectedPet.valueForKey("breed")!
-          
-          let detailText = "\(petSex) \(petBreed)"
-          
-          self.sexAndBreedLabel.text = detailText
-          
-          let age = selectedPet.calculateAge()
-          
-          self.ageLabel.text = age
-          
-          // set the paw print image
-          if selectedPet.sex == "Male" {
-               pawPrintImageView.image = UIImage(named: "pawBlue")
-          } else {
-               pawPrintImageView.image = UIImage(named: "pawPink")
-          }
           
           imagePicker.delegate = self
           imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -60,9 +37,7 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                
           } else {
                photoImageView.image = UIImage(named: "cameraBlue")
-               photoImageView.contentMode = UIViewContentMode.Center
           }
-          
           
           //  use ImageView as button
           let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
@@ -70,6 +45,30 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
           photoImageView.addGestureRecognizer(tapGestureRecognizer)
      }
    
+     override func viewWillAppear(animated: Bool) {
+          super.viewWillAppear(animated)
+          
+          petNameLabel.text = selectedPet.name
+          
+          let petSex = selectedPet.valueForKey("sex")!
+          let petBreed = selectedPet.valueForKey("breed")!
+          
+          let detailText = "\(petSex) \(petBreed)"
+          
+          self.sexAndBreedLabel.text = detailText
+          let age = selectedPet.calculateAge()
+          self.ageLabel.text = age
+
+          // set the paw print image
+          if selectedPet.sex == "Male" {
+               pawPrintImageView.image = UIImage(named: "pawBlue")
+          } else {
+               pawPrintImageView.image = UIImage(named: "pawPink")
+          }
+     }
+     
+     
+     
      func imageTapped(img: AnyObject) {
           self.presentViewController(imagePicker, animated: true, completion: nil)
      }
@@ -97,23 +96,23 @@ class MenuViewController: UIViewController, NSFetchedResultsControllerDelegate, 
      
      
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
           if segue.identifier == "editPetSegue" {
                print(segue.identifier)
                
+               
                if let editPetVC = segue.destinationViewController as? EditPetViewController {
-                   
-                    
-                    
                     editPetVC.selectedPet = self.selectedPet
-                    
                }
-               
-               
-               
+               print("OK")
           }
+          
+          if segue.identifier == "PetIDCard" {
+               if let petIDVC = segue.destinationViewController as? PetIDViewController {
+                    petIDVC.selectedPet = self.selectedPet
+               }
+          }
+          
      }
-     
      
      
 }

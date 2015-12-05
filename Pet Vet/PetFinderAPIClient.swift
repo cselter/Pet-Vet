@@ -7,29 +7,22 @@
 //
 
 import Foundation
-
+import UIKit
 
 // petfinder.com API
-// API Key: 96864f7686fdf133e83c99c2ad3ae809
-// API Secret: 644fba2c18394c315d496ba46576a585
-
-
 class PetFinderAPIClient : NSObject {
      
      var session: NSURLSession
      
      let PETFINDER_BASE_URL = "https://api.petfinder.com/breed.list"
      let PETFINDER_API_KEY = "96864f7686fdf133e83c99c2ad3ae809"
-     // let PETFINDER_API_SECRET = "644fba2c18394c315d496ba46576a585"
      
-     
-     var animal: String? = "dog"
+     var animal: String? = "dog"   // default value if one not provided
      
      override init() {
           session = NSURLSession.sharedSession()
           super.init()
      }
-     
      
      func loadBreeds(completionHandler: (data: NSDictionary?, errorString: String?) -> Void) {
 
@@ -104,18 +97,5 @@ class PetFinderAPIClient : NSObject {
           
           return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
      }
-     
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

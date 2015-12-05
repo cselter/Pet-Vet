@@ -29,6 +29,8 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           }
 
           fetchedResultsController.delegate = self
+          
+          self.tableView.tableFooterView = UIView()
      }
 
      override func viewWillAppear(animated: Bool) {
@@ -39,6 +41,8 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           NSUserDefaults.standardUserDefaults().setInteger(storedPets.count, forKey: StoredPetKey)
           
           print("storedPets.count: \(storedPets.count)")    // DEBUG
+          
+          petTableView.backgroundColor = UIColor(patternImage: UIImage(named:"pawBackgroundLight")!)
      }
      
      override func viewDidAppear(animated: Bool) {
@@ -58,7 +62,7 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
           
           let cell = tableView.dequeueReusableCellWithIdentifier("petCell", forIndexPath: indexPath) as! PetTableViewCell
           
-          var pet = fetchedResultsController.objectAtIndexPath(indexPath)
+          let pet = fetchedResultsController.objectAtIndexPath(indexPath)
 
           let petSex = pet.valueForKey("sex")!
           let petBreed = pet.valueForKey("breed")!
@@ -85,20 +89,6 @@ class ListPetsViewController: UITableViewController, NSFetchedResultsControllerD
                     cell.pawPrintImageView.image = UIImage(named: "catPink")
                }
           }
-
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
           return cell
      }
      

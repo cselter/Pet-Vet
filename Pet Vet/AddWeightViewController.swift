@@ -16,35 +16,50 @@ class AddWeightViewController: UIViewController, NSFetchedResultsControllerDeleg
      
      @IBOutlet weak var weightTextField: UITextField!
      @IBOutlet weak var dateTextField: UITextField!
-     @IBOutlet weak var datePicker: UIDatePicker!
+     @IBOutlet weak var weightUnitLabel: UILabel!
+     var datePicker: UIDatePicker = UIDatePicker()
      
      var weightAmt: Double = 0.0
      var weightDate: NSDate!
      
+     let dateFormatter = NSDateFormatter()
+     
      let missingWeight: String = "Weight is required."
      let missingDate: String = "Date is required."
-     
+     let WeightSettingKey = "Weight Setting"
      override func viewDidLoad() {
           super.viewDidLoad()
+          self.navigationItem.title = "Add New Weight"
           
           // Preset date to today
           weightDate = NSDate()
           
-     }
-
-     @IBAction func weightDateEditBegin(sender: UITextField) {
-          let datePickerView: UIDatePicker = UIDatePicker()
-          datePickerView.datePickerMode = UIDatePickerMode.Date
-          sender.inputView = datePickerView
-          datePickerView.addTarget(self, action: Selector("weightDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-     }
-     
-     func weightDatePickerValueChanged(sender:UIDatePicker) {
-          let dateFormatter = NSDateFormatter()
-          dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+          let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+          view.addGestureRecognizer(tap)
+          
+          dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
           dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
-          dateTextField.text = dateFormatter.stringFromDate(sender.date)
-          weightDate = sender.date
+          datePicker.datePickerMode = UIDatePickerMode.Date
+          dateTextField.inputView = datePicker
+          
+          datePicker.addTarget(self, action: Selector("dateUpdated:"), forControlEvents: UIControlEvents.ValueChanged)
+          
+          // Retrieve the preferred weight unit
+          if NSUserDefaults.standardUserDefaults().integerForKey(WeightSettingKey) == 0 {
+               weightUnitLabel.text = "lbs"
+          } else {
+               weightUnitLabel.text = "kg"
+          }
+          
+     }
+     @IBOutlet weak var dateBorderView: UIView!
+     
+     func dateUpdated(sender: UIDatePicker) {
+          if sender == datePicker
+          {
+               dateTextField.text = dateFormatter.stringFromDate(sender.date)
+               weightDate = sender.date
+          }
      }
 
      @IBAction func saveButtonPressed(sender: AnyObject) {
@@ -81,7 +96,11 @@ class AddWeightViewController: UIViewController, NSFetchedResultsControllerDeleg
           self.presentViewController(alert, animated: true, completion: nil)
      }
      
+     func dismissKeyboard() {
+          view.endEditing(true)
+     }
+     
      @IBAction func cancelButtonPressed(sender: AnyObject) {
-          self.dismissViewControllerAnimated(true, completion: nil)
+          self.navigationController!.popViewControllerAnimated(true)
      }
 }

@@ -19,11 +19,13 @@ class WeightTableViewController: UITableViewController, NSFetchedResultsControll
      var storedWeights = [Weight]()     // local array of fetched weights
      var deleteWeightIndexPath: NSIndexPath? = nil
      var weightToDelete = [Weight]()
-     
-     
+
      var searchPredicate: NSPredicate?
      var filteredObjects : [Weight]? = nil
+     var weightUnitString: String?
+     let WeightSettingKey = "Weight Setting"
      
+     let dateFormatter = NSDateFormatter()
      
      override func viewDidLoad() {
           super.viewDidLoad()
@@ -31,10 +33,20 @@ class WeightTableViewController: UITableViewController, NSFetchedResultsControll
           
           self.navigationItem.title = "Weight Tracking: \(selectedPet.name)"
           
-          var addButton = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: "addWeight")
+          let addButton = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: "addWeight")
           self.navigationItem.rightBarButtonItem = addButton
 
           fetchedResultsController.delegate = self
+          
+          // Retrieve the preferred weight unit
+          if NSUserDefaults.standardUserDefaults().integerForKey(WeightSettingKey) == 0 {
+               weightUnitString = "lbs"
+          } else {
+               weightUnitString = "kg"
+          }
+
+          dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+          dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
      }
      
      
@@ -108,17 +120,22 @@ class WeightTableViewController: UITableViewController, NSFetchedResultsControll
      }
      
      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-          let cell = tableView.dequeueReusableCellWithIdentifier("weightCell", forIndexPath: indexPath)
+          let cell = tableView.dequeueReusableCellWithIdentifier("weightCell", forIndexPath: indexPath) as! WeightTableViewCell
           
           let weightTable = storedWeights[indexPath.row]
           
           let weightAmt = weightTable.weight
           let weightDate = weightTable.date
           
-          let weightAmtStr = "\(weightAmt)"
-          let weightDateStr = "\(weightDate)"
-          cell.textLabel!.text = weightAmtStr
-          cell.detailTextLabel!.text = weightDateStr
+          let weightAmtStr = "\(weightAmt) \(weightUnitString!)"
+
+          let weightDateStr = dateFormatter.stringFromDate(weightDate)
+          
+          cell.dateLabel.text = weightDateStr
+          cell.weightLabel.text = weightAmtStr
+          
+          // cell.textLabel!.text = weightDateStr
+          // cell.detailTextLabel!.text =  weightAmtStr
 
           return cell
      }

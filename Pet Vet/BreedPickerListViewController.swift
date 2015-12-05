@@ -16,13 +16,8 @@ protocol BreedPickerListViewControllerDelegate {
 class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
      
      @IBOutlet weak var navBar: UINavigationBar!
-
      @IBOutlet weak var breedListTableView: UITableView!
-     // @IBOutlet weak var searchBar: UISearchBar!
-   
      @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-     
      @IBOutlet weak var loadingBreedsTextView: UITextView!
      
      let client = PetFinderAPIClient.sharedInstance()
@@ -41,15 +36,10 @@ class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITa
           self.navBar.topItem!.title = "Select \(species!.capitalizedString) Breed"
           breedListTableView.delegate = self
           breedListTableView.dataSource = self
-          
-          //activityView.hidden = false
+
           activityIndicator.startAnimating()
-          
+
           getBreeds()
-          
-          //
-          
-          //activityView.hidden = true
           
           self.resultSearchController = ({
                let controller = UISearchController(searchResultsController: nil)
@@ -59,10 +49,11 @@ class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITa
                self.breedListTableView.tableHeaderView = controller.searchBar
                return controller
           })()
-          
+
      }
      
      func getBreeds() {
+
           let parseDataClient = PetFinderAPIClient.sharedInstance()
           parseDataClient.animal = species
           
@@ -100,8 +91,6 @@ class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITa
                return breedData.count ?? 0
           }
      }
-     
-     
      
      
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -147,8 +136,10 @@ class BreedPickerListViewController: UIViewController, UITableViewDelegate, UITa
           self.breedListTableView.reloadData()
      }
      
+    
      
      
+     // Cancel and return to Add or Edit Pet View Controller
      @IBAction func cancelButtonPressed(sender: AnyObject) {
           delegate?.breedPicker(self, didPickBreed: nil)
           self.dismissViewControllerAnimated(true, completion: nil)

@@ -19,7 +19,5 @@ class PetTableViewCell : UITableViewCell {
      
      @IBOutlet weak var ageLabel: UILabel!
      
-     
-     
 }
 

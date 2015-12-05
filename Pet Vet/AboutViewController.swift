@@ -14,10 +14,12 @@ import MessageUI
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
      
      
+     @IBOutlet weak var weightSettingSegmentedControl: UISegmentedControl!
+     
      @IBOutlet weak var petCountLabel: UILabel!
      
      let StoredPetKey = "Stored Pet Count"
-     
+     let WeightSettingKey = "Weight Setting"
      
      override func viewDidLoad() {
           super.viewDidLoad()
@@ -25,7 +27,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
           // Retrieve the current Pet Count value from NSUserDefaults
           let petCount = NSUserDefaults.standardUserDefaults().integerForKey(StoredPetKey)
           
-          petCountLabel.text = "\(petCount)"
+          // Retrieve the preferred weight unit
+          weightSettingSegmentedControl.selectedSegmentIndex = NSUserDefaults.standardUserDefaults().integerForKey(WeightSettingKey)
+          
+          petCountLabel.text = "\(petCount) pets"
      }
      
      
@@ -45,12 +50,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
      
      
      @IBAction func dismissAboutButton(sender: AnyObject) {
+          // Save the preferred weight unit using NSUserDefaults
+          NSUserDefaults.standardUserDefaults().setInteger(weightSettingSegmentedControl.selectedSegmentIndex, forKey: WeightSettingKey)
+          
           self.dismissViewControllerAnimated(true, completion: nil)
      }
     
      @IBAction func cottontailButtonPressed(sender: AnyObject) {
           
-          // open safari to cottontailsolutions.com/app/petvet
+          // open safari to cottontailsolutions.com/PetVetApp
+          UIApplication.sharedApplication().openURL(NSURL(string: "http://www.cottontailsolutions.com/PetVetApp")!)
+          
+          
      }
      
 }
