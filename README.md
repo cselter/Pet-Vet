@@ -14,6 +14,11 @@ Main Features include:
 * View current information about each Pet (examples: Calculated Age, Saved Photo, Owner's Information)
 * Save a Pet ID Card or Missing Pet Poster with Pet's information
 
+App Screenshots:
+![alt tag](http://www.cottontailsolutions.com/PetVetApp/AppScreenshots/IMG_0887.jpg)
+![alt tag](http://www.cottontailsolutions.com/PetVetApp/AppScreenshots/IMG_0888.jpg)
+![alt tag](http://www.cottontailsolutions.com/PetVetApp/AppScreenshots/IMG_0889.jpg)
+
 #### User Interface Requirements:
 * More than one view controller
   * *App contains numerous view controllers*
@@ -37,6 +42,7 @@ Main Features include:
 #### Persistence Requirements: 
 * Include an object graph that can be persisted in Core Data
   * *Object graphs are persisted in Core Data, including 'Pet' and 'Weight' for example*
+  * *Additional objects will be added in the same manner as the 'Weight' object including: 'Vaccinations', 'Alergies', 'Medications', etc.*
 * Manage the Core Data Stack outside of your view controllers, either in the App Delegate or in a separate Core Data Stack manager class
   * *Core Data Stack is managed within the CoreDataStackManager class*
 * Aside from your primary app state, you should find some additional state that can be stored outside of Core Data, either in NSUserDefaults, or in the documents directory using an NSKeyedArchiver
