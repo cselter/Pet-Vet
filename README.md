@@ -12,6 +12,7 @@ Main Features include:
 * Add/Delete Weight Records
 * Search for Breed Names using PetFinder.com's API
 * View current information about each Pet (examples: Calculated Age, Saved Photo, Owner's Information)
+* Save a Pet ID Card or Missing Pet Poster with Pet's information
 
 #### User Interface Requirements:
 * More than one view controller
@@ -28,8 +29,10 @@ Main Features include:
   * *PetFinder.com's API is integrated into this app to download a list of breeds based on the species of animal (dog, cat, etc.)*
 * Give users feedback around network activity, displaying activity indicators and/or progress bars when appropriate, and an alert in case of connection failures
   * *Activity indicator and message is displayed over the table view within BreedPickerListViewController while the data is downloaded into the app*
+  * *Network availability is checked prior to loading the BreedPickerViewController and an alert is displayed if it is unable to connect*
 * Encapsulate networking code in a class to reduce detail in View Controllers
   * *Networking code is encapsulated in its own class: PetFinderAPIClient*
+  * *Network availability code is also encapsulated in its own Class: Network*
 
 #### Persistence Requirements: 
 * Include an object graph that can be persisted in Core Data
@@ -37,7 +40,7 @@ Main Features include:
 * Manage the Core Data Stack outside of your view controllers, either in the App Delegate or in a separate Core Data Stack manager class
   * *Core Data Stack is managed within the CoreDataStackManager class*
 * Aside from your primary app state, you should find some additional state that can be stored outside of Core Data, either in NSUserDefaults, or in the documents directory using an NSKeyedArchiver
-  * *Using NSUserDefaults, the current number of 'Pet' objects stored is stored.*
+  * *Using NSUserDefaults, the current number of 'Pet' objects stored is stored as well as the preferred Weight Measurement Setting (lbs. or kg.)*
 
 #### README Requirements:
 * Describe the intended user experience
@@ -46,5 +49,8 @@ Main Features include:
 ### Requirements to Use:
 * Xcode 7.0, Swift 2.0
 
-### Future Enhancements:
-* More to come!
+### Planned Future Enhancements:
+* Expand Core Data Model to include other data graphs (Vet Appointment History, Vaccinations, Medications, etc.)
+* Add iCloud Sync 
+* Add iCloud Sharing with other users 
+* Appointment/Vaccination Reminders (w/ Push Notifications)
