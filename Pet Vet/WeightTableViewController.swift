@@ -52,7 +52,6 @@ class WeightTableViewController: UITableViewController, NSFetchedResultsControll
      
      override func viewWillAppear(animated: Bool) {
           super.viewWillAppear(animated)
-          // self.storedWeights = self.fetchAllWeights()
      }
      
      override func viewDidAppear(animated: Bool) {
@@ -133,9 +132,6 @@ class WeightTableViewController: UITableViewController, NSFetchedResultsControll
           
           cell.dateLabel.text = weightDateStr
           cell.weightLabel.text = weightAmtStr
-          
-          // cell.textLabel!.text = weightDateStr
-          // cell.detailTextLabel!.text =  weightAmtStr
 
           return cell
      }

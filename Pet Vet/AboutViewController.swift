@@ -13,9 +13,7 @@ import MessageUI
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
      
-     
      @IBOutlet weak var weightSettingSegmentedControl: UISegmentedControl!
-     
      @IBOutlet weak var petCountLabel: UILabel!
      
      let StoredPetKey = "Stored Pet Count"
@@ -33,7 +31,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
           petCountLabel.text = "\(petCount) pets"
      }
      
-     
      // open email to petvetapp@cottontailsolutions.com
      @IBAction func supportEmailButtonPressed(sender: AnyObject) {
           let sendSupportMailVC = MFMailComposeViewController()
@@ -48,20 +45,15 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
           dismissViewControllerAnimated(true, completion: nil)
      }
      
-     
      @IBAction func dismissAboutButton(sender: AnyObject) {
           // Save the preferred weight unit using NSUserDefaults
           NSUserDefaults.standardUserDefaults().setInteger(weightSettingSegmentedControl.selectedSegmentIndex, forKey: WeightSettingKey)
-          
           self.dismissViewControllerAnimated(true, completion: nil)
      }
     
      @IBAction func cottontailButtonPressed(sender: AnyObject) {
-          
           // open safari to cottontailsolutions.com/PetVetApp
           UIApplication.sharedApplication().openURL(NSURL(string: "http://www.cottontailsolutions.com/PetVetApp")!)
-          
-          
      }
      
 }
