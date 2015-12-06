@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class EditPetViewController: UITableViewController, NSFetchedResultsControllerDelegate, BreedPickerListViewControllerDelegate {
+class EditPetViewController: UITableViewController, NSFetchedResultsControllerDelegate, UITextFieldDelegate, BreedPickerListViewControllerDelegate {
      
      // Currently Selected Pet
      var selectedPet: Pet!
@@ -41,6 +41,12 @@ class EditPetViewController: UITableViewController, NSFetchedResultsControllerDe
           super.viewDidLoad()
           updateWidthsForLabels(labels) // adjust label widths
           tableView.rowHeight = UITableViewAutomaticDimension
+          
+          petNameTextField.delegate = self
+          breedTextField.delegate = self
+          colorTextField.delegate = self
+          microchipTextField.delegate = self
+          registrationIDTextField.delegate = self
           
           let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
           view.addGestureRecognizer(tap)
@@ -223,6 +229,25 @@ class EditPetViewController: UITableViewController, NSFetchedResultsControllerDe
                     constant: maxLabelWidth)
                label.addConstraint(constraint)
           }
+     }
+     
+     func textFieldShouldReturn(textField: UITextField) -> Bool {
+          if textField == petNameTextField{
+               petNameTextField.resignFirstResponder()
+          }
+          if textField == breedTextField{
+               breedTextField.resignFirstResponder()
+          }
+          if textField == colorTextField{
+               colorTextField.resignFirstResponder()
+          }
+          if textField == microchipTextField{
+               microchipTextField.resignFirstResponder()
+          }
+          if textField == registrationIDTextField{
+               registrationIDTextField.resignFirstResponder()
+          }
+          return true
      }
 
 }
